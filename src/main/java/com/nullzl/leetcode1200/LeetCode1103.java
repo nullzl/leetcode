@@ -1,4 +1,4 @@
-package main.java.com.nullzl.leetcode1200;
+package com.nullzl.leetcode1200;
 
 public class LeetCode1103 {
     public int[] distributeCandies(int candies, int num_people) {

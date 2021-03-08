@@ -1,4 +1,4 @@
-package main.java.com.nullzl.interview;
+package com.nullzl.interview;
 
 import java.util.LinkedList;
 import java.util.List;

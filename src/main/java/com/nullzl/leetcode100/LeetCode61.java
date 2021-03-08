@@ -1,6 +1,6 @@
-package main.java.com.nullzl.leetcode100;
+package com.nullzl.leetcode100;
 
-import main.java.com.nullzl.util.ListNode;
+import com.nullzl.util.ListNode;
 
 public class LeetCode61 {
     public ListNode rotateRight(ListNode head, int k) {

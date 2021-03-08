@@ -1,7 +1,7 @@
-package main.java.com.nullzl.leetcode200;
+package com.nullzl.leetcode200;
 
-import main.java.com.nullzl.util.ListNode;
-import main.java.com.nullzl.util.TreeNode;
+import com.nullzl.util.ListNode;
+import com.nullzl.util.TreeNode;
 
 public class LeetCode109 {
 

@@ -1,4 +1,4 @@
-package main.java.com.nullzl.leetcode100;
+package com.nullzl.leetcode100;
 
 public class LeetCode52 {
     private int solve(int n, int rowIndex,int[] rows,int[] columns,int[] line1,int[] line2){

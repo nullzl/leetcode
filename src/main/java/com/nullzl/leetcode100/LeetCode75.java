@@ -1,4 +1,4 @@
-package main.java.com.nullzl.leetcode100;
+package com.nullzl.leetcode100;
 
 public class LeetCode75 {
     public void sortColors(int[] nums) {

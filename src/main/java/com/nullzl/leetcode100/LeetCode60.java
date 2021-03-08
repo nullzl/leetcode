@@ -1,4 +1,4 @@
-package main.java.com.nullzl.leetcode100;
+package com.nullzl.leetcode100;
 
 public class LeetCode60 {
     public String getPermutation(int n, int k) {

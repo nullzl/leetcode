@@ -1,4 +1,4 @@
-package main.java.com.nullzl.LeetCode1300;
+package com.nullzl.LeetCode1300;
 
 public class LeetCode1278 {
 

@@ -1,6 +1,6 @@
-package main.java.com.nullzl.leetcode300;
+package com.nullzl.leetcode300;
 
-import main.java.com.nullzl.util.TreeNode;
+import com.nullzl.util.TreeNode;
 
 import java.util.HashMap;
 

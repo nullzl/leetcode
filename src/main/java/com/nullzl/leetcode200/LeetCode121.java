@@ -1,4 +1,4 @@
-package main.java.com.nullzl.leetcode200;
+package com.nullzl.leetcode200;
 
 public class LeetCode121 {
     public int maxProfit(int[] prices) {

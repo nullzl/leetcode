@@ -1,4 +1,4 @@
-package main.java.com.nullzl.util;
+package com.nullzl.util;
 
 public class ListNode {
 

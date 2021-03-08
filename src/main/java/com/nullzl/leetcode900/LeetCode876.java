@@ -1,6 +1,6 @@
 package com.nullzl.leetcode900;
 
-import main.java.com.nullzl.util.ListNode;
+import com.nullzl.util.ListNode;
 
 public class LeetCode876 {
     public ListNode middleNode(ListNode head) {

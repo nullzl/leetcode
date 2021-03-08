@@ -1,4 +1,4 @@
-package main.java.com.nullzl.leetcode500;
+package com.nullzl.leetcode500;
 
 import java.util.Arrays;
 import java.util.Comparator;

@@ -1,4 +1,4 @@
-package main.java.com.nullzl.leetcode100;
+package com.nullzl.leetcode100;
 
 public class LeetCode37 {
     boolean[][] rows = new boolean[9][9];

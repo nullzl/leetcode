@@ -1,4 +1,4 @@
-package main.java.com.nullzl.interview;
+package com.nullzl.interview;
 
 public class LeetCode0106 {
     public String compressString(String S) {

@@ -1,4 +1,4 @@
-package main.java.com.nullzl.leetcode1500;
+package com.nullzl.leetcode1500;
 
 import java.util.LinkedList;
 import java.util.Random;

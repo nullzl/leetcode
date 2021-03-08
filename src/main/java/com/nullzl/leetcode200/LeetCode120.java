@@ -1,4 +1,4 @@
-package main.java.com.nullzl.leetcode200;
+package com.nullzl.leetcode200;
 
 import java.util.Iterator;
 import java.util.List;

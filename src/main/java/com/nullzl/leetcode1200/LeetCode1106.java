@@ -1,4 +1,4 @@
-package main.java.com.nullzl.leetcode1200;
+package com.nullzl.leetcode1200;
 
 import java.util.Arrays;
 

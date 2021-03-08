@@ -1,4 +1,4 @@
-package main.java.com.nullzl.leetcode100;
+package com.nullzl.leetcode100;
 
 public class LeetCode06 {
     public String convert(String s, int numRows) {

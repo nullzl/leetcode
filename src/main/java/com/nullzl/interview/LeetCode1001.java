@@ -1,4 +1,4 @@
-package main.java.com.nullzl.interview;
+package com.nullzl.interview;
 
 public class LeetCode1001 {
 

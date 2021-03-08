@@ -1,4 +1,4 @@
-package main.java.com.nullzl.leetcode1000;
+package com.nullzl.leetcode1000;
 
 import javax.lang.model.element.NestingKind;
 

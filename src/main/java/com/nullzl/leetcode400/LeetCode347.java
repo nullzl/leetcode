@@ -1,4 +1,4 @@
-package main.java.com.nullzl.leetcode400;
+package com.nullzl.leetcode400;
 
 import java.util.Arrays;
 import java.util.HashMap;

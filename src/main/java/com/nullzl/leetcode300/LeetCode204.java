@@ -1,4 +1,4 @@
-package main.java.com.nullzl.leetcode300;
+package com.nullzl.leetcode300;
 
 import java.util.BitSet;
 

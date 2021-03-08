@@ -1,6 +1,6 @@
 package com.nullzl.leetcode500;
 
-import main.java.com.nullzl.util.ListNode;
+import com.nullzl.util.ListNode;
 
 public class LeetCode445 {
 

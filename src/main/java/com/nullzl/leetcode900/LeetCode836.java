@@ -1,4 +1,4 @@
-package main.java.com.nullzl.leetcode900;
+package com.nullzl.leetcode900;
 
 public class LeetCode836 {
 

@@ -1,6 +1,6 @@
-package main.java.com.nullzl.leetcode300;
+package com.nullzl.leetcode300;
 
-import main.java.com.nullzl.util.ListNode;
+import com.nullzl.util.ListNode;
 
 public class LeetCode328 {
 
