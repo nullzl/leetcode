@@ -1,8 +1,36 @@
 package com.nullzl.leetcode100;
 
+import java.util.Arrays;
+
 public class LeetCode91 {
 
+    private int count(char[] arr,int s,int[] dp){
+        if(-1 != dp[s])
+            return dp[s];
+        if('0' == arr[s]){
+            dp[s] = 0;
+        }else if('1' == arr[s]){
+            dp[s] = count(arr,s+1,dp);
+            dp[s] += (s + 1 < arr.length ? count(arr,s + 2,dp) : 0);
+        }else if('2' == arr[s]){
+            dp[s] = count(arr,s+1,dp);
+            dp[s] += (s + 1 < arr.length && arr[s + 1] >= '0' && arr[s+1] <= '6' ? count(arr,s + 2,dp) : 0);
+        }else{
+            dp[s] = count(arr,s+1,dp);
+        }
+        return dp[s];
+    }
+
     public int numDecodings(String s) {
+
+        char[] arr = s.toCharArray();
+        int[] dp = new int[arr.length + 1];
+        Arrays.fill(dp,-1);
+        dp[arr.length] = 1;
+        return count(arr,0,dp);
+    }
+
+    public int numDecodings1(String s) {
         if(null ==  s || 0 == s.length())
             return 0;
 

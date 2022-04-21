@@ -5,6 +5,22 @@ import java.util.Random;
 public class LeetCode1128 {
 
     public int numEquivDominoPairs(int[][] dominoes) {
+        int[][] map = new int[10][10];
+        int count = 0;
+        for(int[] item : dominoes){
+            map[item[0]][item[1]] += 1;
+        }
+        for(int i = 1 ; i < 10 ; i++){
+            for(int j = i + 1 ; j < 10 ; j++){
+                map[i][j] += map[j][i];
+                count += ((map[i][j] * (map[i][j] -1)) >> 1);
+            }
+            count += ((map[i][i] * (map[i][i] -1)) >> 1);
+        }
+        return count;
+    }
+
+    public int numEquivDominoPairs1(int[][] dominoes) {
 
         int maxBits = 4;
         int[] map = new int[1 << (maxBits << 1)];

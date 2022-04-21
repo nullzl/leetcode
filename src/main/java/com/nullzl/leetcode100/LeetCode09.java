@@ -2,7 +2,7 @@ package com.nullzl.leetcode100;
 
 public class LeetCode09 {
 
-    public boolean isPalindrome(int x) {
+    public boolean isPalindrome1(int x) {
 
         if(x < 0)
             return false;
@@ -16,5 +16,14 @@ public class LeetCode09 {
             return true;
         return false;
 
+    }
+    public boolean isPalindrome(int x) {
+        int y = 0;
+        while(x > y){
+            int t = x % 10;
+            y = y * 10 + x % 10;
+            x /= 10;
+        }
+        return x == y || y / 10 == x;
     }
 }

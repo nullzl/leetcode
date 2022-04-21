@@ -29,7 +29,7 @@ public class LeetCode410 {
     }
 
 
-    public int splitArray(int[] nums, int m) {
+    public int splitArray1(int[] nums, int m) {
 
         int[][] dp = new int[m][nums.length];
         dp[0][0] = nums[0];
@@ -45,6 +45,35 @@ public class LeetCode410 {
         }
         return dp[m-1][nums.length - 1];
 
+    }
+
+    private boolean check(int[] nums,int m , int sum){
+        int count = 0;
+        for(int i = 0 ; i < nums.length && count <= m ;){
+            int tmp = 0;
+            int j = i;
+            count++;
+            while(j < nums.length && (tmp+=nums[j]) <= sum)j++;
+            i = j;
+        }
+        return count <= m;
+    }
+
+    public int splitArray(int[] nums, int m) {
+
+        int sum = 0;
+        for(int n : nums)
+            sum += n;
+        int low = 0;
+        int high = sum;
+        while(low < high){
+            int mid = low + ((high - low) >> 1);
+            if(check(nums,m,mid))
+                high = mid;
+            else
+                low = mid + 1;
+        }
+        return low;
     }
 
     public static void main(String[] args){

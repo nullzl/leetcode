@@ -4,11 +4,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class LeetCode1114 {
 
-    class Foo {
+    class Foo1 {
 
         AtomicInteger ticket;
 
-        public Foo() {
+        public Foo1() {
             ticket = new AtomicInteger(0);
         }
 
@@ -35,4 +35,9 @@ public class LeetCode1114 {
             printThird.run();
         }
     }
+
+
+
+
+
 }

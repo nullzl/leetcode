@@ -19,9 +19,32 @@ public class LeetCode494 {
                 sumWays(nums,k-1,s -nums[k]);
     }
 
-    public int findTargetSumWays(int[] nums, int S) {
+    public int findTargetSumWays1(int[] nums, int S) {
 
         return sumWays(nums,nums.length - 1,S);
 
+    }
+
+    public int findTargetSumWays2(int[] nums, int target) {
+        int sum = 0;
+        int[] prev = new int[nums.length];
+        prev[0] = nums[0];
+        for(int i = 1 ; i < nums.length ; i++)
+            prev[i] = prev[i-1] + nums[i];
+        sum = prev[nums.length - 1];
+        if(target < -sum || target > sum)
+            return 0;
+        int[][] dp = new int[nums.length + 1][(sum << 1) + 1];
+        dp[0][sum] = 1;
+        for(int i = 1 ; i <= nums.length ; i++){
+            for(int j = sum - prev[i-1] ; j <= sum + prev[i-1] ; j++){
+                dp[i][j] = (j + nums[i-1] < dp[i].length ? dp[i-1][j + nums[i-1]] : 0)
+                        + (j - nums[i-1] >= 0 ?dp[i-1][j - nums[i-1]] : 0);
+
+                if(i == nums.length && j == target + sum)
+                    break;
+            }
+        }
+        return dp[nums.length][target + sum];
     }
 }

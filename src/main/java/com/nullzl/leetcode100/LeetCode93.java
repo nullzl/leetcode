@@ -5,23 +5,20 @@ import java.util.List;
 
 public class LeetCode93 {
 
-    private void getIP(List<String> rs,String s,int index,int count,String ip){
-        if(4 == count){
-            int num = 0;
-            for(int i = index ; i < s.length() ; i++){
-                num = num * 10 + (s.charAt(i) - '0');
-                if(num == 0 && i != s.length() - 1){
-                    return ;
-                }
-            }
-            if(num >= 0 && num <= 255){
-                ip += ("." + num);
-                rs.add(ip);
-            }
+    private void dfs(List<String> rs , String s , int i , String ip,String num, int count){
+        if(i == s.length() && 4 == count){
+            rs.add(ip);
             return ;
         }
+        if(i == s.length() || 4 == count || (4 - count) * 3 < num.length() + s.length() - i)
+            return ;
 
-
+        num += String.valueOf(s.charAt(i));
+        if((num.length() > 1 && num.charAt(0) == '0') || Integer.parseInt(num) > 255){
+            return ;
+        }
+        dfs(rs,s,i + 1,0 == count ? num : ip + "." + num,"",count+1);
+        dfs(rs,s,i + 1,ip,num,count);
     }
 
     public List<String> restoreIpAddresses(String s) {
@@ -29,8 +26,7 @@ public class LeetCode93 {
         LinkedList<String> rs = new LinkedList<String>();
         if(null == s || 0 == s.length() || s.length() > 12)
             return rs;
-
+        dfs(rs,s,0,"","",0);
         return rs;
-
     }
 }

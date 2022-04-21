@@ -3,6 +3,10 @@ package com.nullzl.leetcode200;
 public class LeetCode134 {
 
     public int canCompleteCircuit(int[] gas, int[] cost) {
+        return 0;
+    }
+
+    public int canCompleteCircuit1(int[] gas, int[] cost) {
 
         if(null == gas || null == cost || 0 == gas.length || 0 == cost.length ||
                 gas.length != cost.length)

@@ -5,6 +5,24 @@ import java.util.Random;
 public class LeetCode402 {
 
     public String removeKdigits(String num, int k) {
+        if(k == num.length())
+            return "0";
+        char[] arr = num.toCharArray();
+        int i = 0, j = 0,m = k;
+
+        for(;j < arr.length && (m > 0 || i < arr.length - m); j++){
+            while(m > 0 && i > 0 && arr[j] < arr[i-1]){
+                i--;
+                m--;
+            }
+            arr[i++] = arr[j];
+        }
+        j = 0;
+        while(j < arr.length - k - 1 && '0' == arr[j]) j++;
+        return new String(arr,j,arr.length - k - j);
+    }
+
+    public String removeKdigits1(String num, int k) {
 
         if(null == num || 0 == num.length() || k == num.length())
             return "0";

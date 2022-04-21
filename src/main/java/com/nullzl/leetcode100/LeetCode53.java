@@ -9,8 +9,8 @@ public class LeetCode53 {
         int maxSum = 0x80000000;
         int sum = 0 ;
         for(int i = 0 ; i < nums.length ; i++){
-            int temp = sum - minSum;
             sum += nums[i];
+            int temp = sum - minSum;
             if(temp > maxSum)
                 maxSum = temp;
             if(sum < minSum)

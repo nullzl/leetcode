@@ -1,8 +1,13 @@
 package com.nullzl.leetcode300;
 
 public class LeetCode231 {
-
     public boolean isPowerOfTwo(int n) {
+        if(n <= 0)
+            return false;
+        return 0 == (n & (n - 1));
+    }
+
+    public boolean isPowerOfTwo1(int n) {
 
         int exp = 0x80000000;
         if(0 != (exp & n))

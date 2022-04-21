@@ -5,6 +5,37 @@ import java.util.HashMap;
 public class LeetCode76 {
 
     public String minWindow(String s, String t) {
+        char[] arr1 = s.toCharArray();
+        char[] arr2 = t.toCharArray();
+        int[] map = new int[256];
+        int total = arr2.length;
+        for(char ch : arr2)
+            map[ch]++;
+        int left = 0,right = 0;
+        int begin = -1, end = arr1.length;
+        for(; right < arr1.length ; right++){
+            //更新窗口缺失计数
+            if(map[arr1[right]]-- > 0)
+                total--;
+
+            //收缩窗口，记录可能的最大left
+            int max = -1;
+            while(0 == total){
+                if(++ map[arr1[left]] > 0)
+                    total++;
+                max = left++;
+            }
+
+            //更新结果子串
+            if(-1 != max && right - left + 1 < end - begin){
+                begin = left;
+                end = right + 1;
+            }
+        }
+        return -1 == begin ? "" : s.substring(begin,end);
+    }
+
+    public String minWindow1(String s, String t) {
         if(null == s || 0 == s.length() || null == t || 0 == t.length() || s.length() < t.length())
             return "";
         HashMap<Integer,Integer> map = new HashMap<Integer, Integer>();

@@ -9,7 +9,7 @@ public class LeetCode31 {
      * 由于ai<ak,所以下一个排列为
      * a1,a2,..ai-1,ak,(an,an-1,an-2,...,ak+1,ai),ak-1,ak-2,...ai+1
      */
-    public void nextPermutation(int[] nums) {
+    public void nextPermutation1(int[] nums) {
         if(null == nums || 0 == nums.length)
             return ;
         if(1 == nums.length){
@@ -49,6 +49,31 @@ public class LeetCode31 {
             swap(nums,start,end);
             start++;
             end--;
+        }
+    }
+
+
+    public void nextPermutation(int[] nums) {
+        if(null == nums) return;
+
+        //1. 寻找逆序点
+        int pos = nums.length - 2;
+        while(pos >= 0 && nums[pos] >= nums[pos + 1]) pos--;
+
+        //2. 比逆序点大的最小值，交换
+        int min = nums.length - 1;
+        if(-1 != pos) {     //字典序循环
+            while (min > pos && nums[min] <= nums[pos]) min--;
+            nums[pos] = nums[pos] ^ nums[min];
+            nums[min] = nums[pos] ^ nums[min];
+            nums[pos] = nums[pos] ^ nums[min];
+        }
+
+        //3. 反转逆序点后的序列
+        for(int i = pos + 1,j = nums.length - 1 ; i < j; i++,j--){
+            nums[i] = nums[i] ^ nums[j];
+            nums[j] = nums[i] ^ nums[j];
+            nums[i] = nums[i] ^ nums[j];
         }
     }
 }

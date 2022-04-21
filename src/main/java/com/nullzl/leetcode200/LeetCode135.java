@@ -3,6 +3,34 @@ package com.nullzl.leetcode200;
 public class LeetCode135 {
 
     public int candy(int[] ratings) {
+        if(null == ratings || 0 == ratings.length)
+            return 0;
+        int[] ans = new int[ratings.length];
+        ans[0] = 1;
+        for(int i = 1 ; i < ratings.length ; ){
+            if(ratings[i] > ratings[i-1]) {
+                ans[i] = ans[i - 1] + 1;
+                i++;
+            } else if(ratings[i] == ratings[i-1])
+                ans[i++] = 1;
+            else{
+                int j = i + 1;
+                while(j < ratings.length && ratings[j] < ratings[j-1])
+                    j++;
+                for(int k = j - 1 ; k >= i ; k--)
+                    ans[k] = j - k;
+                ans[i-1] = Math.max(ans[i-1],j - i + 1);
+                i = j;
+            }
+        }
+        int sum = 0;
+        for(int num : ans)
+            sum += num;
+        return sum;
+
+    }
+
+    public int candy1(int[] ratings) {
 
         if(null == ratings || 0 == ratings.length)
             return 0;

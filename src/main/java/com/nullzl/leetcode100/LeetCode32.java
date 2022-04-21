@@ -34,7 +34,7 @@ public class LeetCode32 {
         return maxLen;
     }
 
-    public int longestValidParentheses(String s) {
+    public int longestValidParentheses1(String s) {
         if(null == s || 0 == s.length())
             return 0;
         int maxLen = 0 ;
@@ -66,6 +66,40 @@ public class LeetCode32 {
         if(end - index > maxLen)
             maxLen = end - index;
         return maxLen;
+    }
+
+    public int longestValidParentheses(String s) {
+        int longest = 0;
+        if(null == s || 0 == s.length())
+            return longest;
+
+        int left = 0, right = 0;
+        char[] chs = s.toCharArray();
+        for(char ch : chs){
+            if('(' == ch)
+                left++;
+            else
+                right++;
+            if(left == right)
+                longest = Math.max(right,longest);
+            else if(right > left){
+                left = 0;
+                right = 0;
+            }
+        }
+        left = right = 0;
+        for(int i = chs.length - 1 ; i >= 0 ; i--){
+            char ch = chs[i];
+            if('(' == ch)
+                left++;
+            else
+                right++;
+            if(left == right)
+                longest = Math.max(right , longest);
+            else if(left > right)
+                left = right = 0;
+        }
+        return longest;
     }
     public static void main(String[] args){
         System.out.println(new LeetCode32().longestValidParentheses(")()())"));

@@ -2,9 +2,42 @@ package com.nullzl.leetcode100;
 
 public class LeetCode05 {
 
+    int start = 0,end = 0;
+    private void longest(boolean[] visited,char[] arr,int pos){
+        if(visited[pos])
+            return;
+        visited[pos] = true;
+        int left = pos - 1;
+        int right = pos + 1;
+        while(left >= 0 && arr[left] == arr[pos]){ visited[left]= true;left--;}
+        while(right < arr.length && arr[right] == arr[pos]) {visited[right] = true ; right++;}
+        while(left >= 0 && right < arr.length && arr[left] == arr[right]){
+            left--;right++;
+        }
+        if(right - left - 1 > end - start){
+            start = left + 1;
+            end = right;
+        }
+    }
+
+
+    public String longestPalindrome7(String s) {
+        boolean[] visited = new boolean[s.length()];
+        char[] arr = s.toCharArray();
+        int mid = (s.length() - 1) >> 1;
+        for(int k = 0 ; (mid + k < arr.length || mid - k >= 0) && ((mid - k + 1) << 1) > (end - start) ; k++){
+
+            if(mid - k >= 0)
+                longest(visited,arr,mid - k);
+            if(mid + k < arr.length)
+                longest(visited,arr,mid + k);
+        }
+        return s.substring(start,end);
+    }
+
     //马拉车
     //进一步可优化内存，不实际构造字符串
-    public String longestPalindrome(String s) {
+    public String longestPalindrome5(String s) {
 
         if(null == s || 0 == s.length())
             return "";
@@ -117,6 +150,34 @@ public class LeetCode05 {
             }
         }
         return s.substring(maxStart,maxStart + maxLen);
+    }
+
+    public boolean compare(char[] arr,int i,int j){
+        return (0 == (i & 1) && 0 == (j & 1)) || (0 != (i & 1) && 0 != (j & 1) && (arr[i >> 1] == arr[j >> 1]));
+    }
+
+    public String longestPalindrome(String s) {
+        char[] arr = s.toCharArray();
+        int[] r = new int[(arr.length << 1) + 1];
+        int c = 0 , g = 0;
+        r[0] = 1;
+        for(int i = 1 ; i < r.length ; i++){
+            int j = i >= g ? i + 1 : Math.min(g + 1, i + r[(c << 1) - i]);
+            while(j < r.length && (i << 1) - j >= 0 && compare(arr,j,(i << 1) - j))j++;
+            r[i] = j - i;
+            if(j > g) {
+                c = i;
+                g = j - 1;
+            }
+        }
+        int maxIdx = 0;
+        for(int i = 1 ; i < r.length ; i++)
+            if(r[maxIdx] < r[i])
+                maxIdx = i;
+
+        int a = (maxIdx + r[maxIdx] - 2) >> 1;
+        int b = (maxIdx - r[maxIdx] + 2) >> 1;
+        return s.substring(b,a + 1);
     }
 
     public static void main(String[] args){

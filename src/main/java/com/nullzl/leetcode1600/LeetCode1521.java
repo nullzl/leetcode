@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class LeetCode1521 {
 
+
     public int closestToTarget(int[] arr, int target) {
          int[] list = new int[20];
          int[] list2 = new int[20];

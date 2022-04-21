@@ -12,12 +12,24 @@ public class LeetCode111 {
         return Math.min(depth(root.left,depth + 1),depth(root.right,depth + 1));
     }
 
-    public int minDepth(TreeNode root) {
+    public int minDepth1(TreeNode root) {
 
         if(null == root)
             return 0 ;
 
         return depth(root,0);
 
+    }
+
+    public int minDepth(TreeNode root) {
+        if(null == root)
+            return 0;
+        if(null == root.left && null == root.right)
+            return 1;
+        if(null == root.left)
+            return minDepth(root.right) + 1;
+        if(null == root.right)
+            return minDepth(root.left) + 1;
+        return Math.min(minDepth(root.left),minDepth(root.right)) + 1;
     }
 }
