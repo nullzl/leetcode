@@ -10,7 +10,7 @@ public class LeetCode1315 {
         if(null == root)
             return ;
         sum += grandfather == null ? 0 : root.val;
-        Thread
+
         traverse(root.left,(0 != (1 & root.val) ? null : root),parent);
         traverse(root.right,(0 != (1 & root.val) ? null : root),parent);
     }
