@@ -10,10 +10,10 @@ public class Util {
         Random r = new Random();
         StringBuffer str = new StringBuffer();
         str.append("[");
-        str.append((r.nextInt(e) + s));
+        str.append((r.nextInt(e - s) + s));
         for(int i = 1 ; i < len ; i++) {
             str.append(",");
-            str.append((r.nextInt(e) + s));
+            str.append((r.nextInt(e - s) + s));
         }
         str.append("]");
         return str.toString();
