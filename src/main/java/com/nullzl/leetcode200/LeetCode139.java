@@ -34,7 +34,7 @@ public class LeetCode139 {
         return false;
     }
 
-    public boolean wordBreak(String s, List<String> wordDict) {
+    public boolean wordBreak1(String s, List<String> wordDict) {
 
         Iterator<String> iterator = wordDict.iterator();
         HashSet<String> set = new HashSet<>();
@@ -50,5 +50,49 @@ public class LeetCode139 {
 
         return findWord(s,0,set,maxLen,cache);
 
+    }
+
+    class Node{
+        Node[] children = new Node[26];
+        boolean isWord = false;
+    }
+
+    private void addWord(Node root,String word){
+        Node node = root;
+        char[] arr = word.toCharArray();
+        int i = 0 ;
+        while(i < arr.length && null != node.children[arr[i] - 'a'])
+            node = node.children[arr[i++] - 'a'];
+        for(; i < arr.length ; i++){
+            node.children[arr[i] - 'a'] = new Node();
+            node = node.children[arr[i] - 'a'];
+        }
+        node.isWord = true;
+    }
+
+    private boolean match(Node node,char[] arr,int idx,int[] match,Node root){
+        if(null == node)
+            return false;
+        if(idx == arr.length)
+            return node.isWord;
+        if(0 != match[idx] && node == root)
+            return match[idx] == 1 ;
+        boolean rs = false;
+        if(node.isWord){
+            match[idx] = match(root,arr,idx,match,root) ? 1 : -1;
+            rs = rs || (match[idx] == 1);
+        }
+        if(!rs)
+            rs = rs || match(node.children[arr[idx] - 'a'],arr,idx + 1,match,root);
+        return rs;
+    }
+
+    public boolean wordBreak(String s, List<String> wordDict) {
+        Node root = new Node();
+        for(String word : wordDict){
+            addWord(root,word);
+        }
+        int[] match = new int[s.length()];
+        return match(root,s.toCharArray(),0,match,root);
     }
 }

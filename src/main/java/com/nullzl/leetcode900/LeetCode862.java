@@ -3,7 +3,9 @@ package com.nullzl.leetcode900;
 import java.util.Arrays;
 import java.util.Random;
 
-public class LeetCode862 {
+public class    LeetCode862 {
+
+
 
     private int start(int[] nums,int i){
         while(i < nums.length && nums[i] <= 0)

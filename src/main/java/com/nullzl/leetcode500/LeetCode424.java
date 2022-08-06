@@ -16,7 +16,7 @@ public class LeetCode424 {
         return max;
     }
 
-    public int characterReplacement(String s, int k) {
+    public int characterReplacement1(String s, int k) {
 
         char[] arr = s.toCharArray();
         int[][] count = new int['Z' - 'A' + 1][arr.length + 1];
